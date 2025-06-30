@@ -27,4 +27,8 @@ class GanadorState implements GameState{
     }
   }
   
+  public void handleKeyReleased(){
+    
+  }
+  
 }

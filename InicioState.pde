@@ -27,4 +27,8 @@ class InicioState implements GameState{
     }
   }
   
+  public void handleKeyReleased(){
+    
+  }
+  
 }

@@ -3,6 +3,7 @@ class Game{
   
   public Game(){
     estadoActual = new InicioState(this);
+    Time.setLastTime(millis());
   }
   
   public void setState(GameState nuevoEstado){
@@ -19,6 +20,10 @@ class Game{
   
   public void handleKeyPressed(){
     estadoActual.handleKeyPressed();
+  }
+  
+  public void handleKeyReleased(){
+    estadoActual.handleKeyReleased();
   }
   
 }
