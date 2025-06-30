@@ -17,5 +17,8 @@ class JugandoState implements GameState{
   }
   
   public void handleKeyPressed(){
+    if(key=='W'){
+      game.setState(new GanadorState(game));
+    }
   }
 }
