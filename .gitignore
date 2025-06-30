@@ -1,0 +1,23 @@
+# ====================================
+# .gitignore para proyecto Processing
+# ====================================
+
+# 1️⃣ Ignorar carpetas de exportación de Processing
+application.*
+
+# 2️⃣ Ignorar archivos temporales de Processing (poco frecuentes)
+*.tmp
+
+# 3️⃣ Ignorar archivos de sistema (Mac)
+.DS_Store
+
+# 4️⃣ Ignorar binarios o clases compiladas (por si usás librerías Java externas)
+*.class
+*.jar
+*.exe
+*.dll
+*.app
+
+# 5️⃣ Ignorar logs o archivos de sistema accidentalmente generados
+Thumbs.db
+ehthumbs.db
