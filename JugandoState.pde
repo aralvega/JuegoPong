@@ -14,6 +14,8 @@ class JugandoState implements GameState{
   public void update(){
     this.paletaJugador.mover();
     this.pelota.mover();
+    this.pelota.validarColision(this.paletaJugador);
+    this.pelota.validarColision(this.paletaCPU);
     this.paletaCPU.mover(this.pelota);
   }
   
