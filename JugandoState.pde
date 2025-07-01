@@ -1,19 +1,27 @@
 class JugandoState implements GameState{
   private Game game;
   private PaletaJugador paletaJugador;
+  private PaletaCPU paletaCPU;
+  private Pelota pelota;
   
   public JugandoState(Game game){
     this.game = game;
     this.paletaJugador = new PaletaJugador();
+    this.paletaCPU = new PaletaCPU();
+    this.pelota = new Pelota();
   }
   
   public void update(){
     this.paletaJugador.mover();
+    this.pelota.mover();
+    this.paletaCPU.mover(this.pelota);
   }
   
   public void render(){
     background(0);
     this.paletaJugador.dibujar();
+    this.pelota.dibujar();
+    this.paletaCPU.dibujar();
   }
   
   public void handleKeyPressed(){
