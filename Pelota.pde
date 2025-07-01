@@ -12,7 +12,7 @@ class Pelota{
     this.maxBounceAngle = PI/4;
   }
   
-  private void resetEstado(){
+  public void resetEstado(){
     posicion = new PVector(width/2,height/2);
     // Dirección: derecha o izquierda
     float direccionEjeX = random(1) < 0.5 ? 1 : -1;
@@ -32,8 +32,23 @@ class Pelota{
     if(posicion.y+radio >=height){
       this.velocidad.y*=-1;
       this.posicion.y = height -this.radio; // Reposiciona justo dentro para evitar el arrastre contra pared inferior
+    }  
+  }
+  
+  public boolean validarChoqueParedVerticalDerecha(){
+    boolean rebota = false;
+    if(this.posicion.x-this.radio >= width){
+      rebota = true;
     }
-    
+    return rebota;
+  }
+  
+  public boolean validarChoqueParedVerticalIzquierda(){
+    boolean rebota = false;
+    if(this.posicion.x+this.radio <= 0){
+      rebota = true;
+    }
+    return rebota;
   }
   
   public void validarColision(Paleta paleta){

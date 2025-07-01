@@ -3,6 +3,7 @@ class Paleta{
   protected PVector velocidad;
   protected int ancho;
   protected int alto;
+  protected int puntaje;
   
   public Paleta(){
     this.posicion = new PVector(100,100);
@@ -27,5 +28,13 @@ class Paleta{
   
   public int getAlto(){
     return this.alto;
+  }
+  
+  public int getPuntaje(){
+    return this.puntaje;
+  }
+  
+  public void setPuntaje(int puntaje){
+    this.puntaje = puntaje;
   }
 }

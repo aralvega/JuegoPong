@@ -3,12 +3,14 @@ class JugandoState implements GameState{
   private PaletaJugador paletaJugador;
   private PaletaCPU paletaCPU;
   private Pelota pelota;
+  private HUD hud;
   
   public JugandoState(Game game){
     this.game = game;
     this.paletaJugador = new PaletaJugador();
     this.paletaCPU = new PaletaCPU();
     this.pelota = new Pelota();
+    this.hud = new HUD();
   }
   
   public void update(){
@@ -16,7 +18,17 @@ class JugandoState implements GameState{
     this.pelota.mover();
     this.pelota.validarColision(this.paletaJugador);
     this.pelota.validarColision(this.paletaCPU);
+    if(this.pelota.validarChoqueParedVerticalDerecha()){
+      this.paletaJugador.setPuntaje(this.paletaJugador.getPuntaje()+1);
+      this.pelota.resetEstado();
+    }
+    if(this.pelota.validarChoqueParedVerticalIzquierda()){
+      this.paletaCPU.setPuntaje(this.paletaCPU.getPuntaje()+1);
+      this.pelota.resetEstado();
+    }
+    this.hud.visualizarPuntajes(paletaJugador.getPuntaje(),paletaCPU.getPuntaje());
     this.paletaCPU.mover(this.pelota);
+    
   }
   
   public void render(){
