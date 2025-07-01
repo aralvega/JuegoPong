@@ -19,9 +19,22 @@ class Pelota{
     this.velocidad = new PVector(200 * direccionEjeX, 200 * anguloY);
   }
   
+  public boolean validarReboteParedesHorizontales(){
+    boolean rebota = false;
+    if(this.posicion.y-radio <= 0 || posicion.y+radio >=height){
+      rebota = true;
+    }
+    return rebota;
+  }
+  
   public void mover(){
     this.posicion.x+=this.velocidad.x*Time.getDeltaTime();
     this.posicion.y+=this.velocidad.y*Time.getDeltaTime();
+    
+    if(validarReboteParedesHorizontales()){
+      this.velocidad.y*=-1;
+    }
+    
   }
   
   public void dibujar(){
