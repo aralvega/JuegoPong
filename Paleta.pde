@@ -16,4 +16,16 @@ class Paleta{
     noStroke();
     rect(this.posicion.x,this.posicion.y,this.ancho,this.alto);
   }
+  
+  public PVector getPosicion(){
+    return this.posicion;
+  }
+  
+  public int getAncho(){
+    return this.ancho;
+  }
+  
+  public int getAlto(){
+    return this.alto;
+  }
 }
