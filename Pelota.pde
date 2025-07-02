@@ -66,6 +66,11 @@ class Pelota{
       // Invertir X → rebote frontal
       if (abs(distX) > abs(distY)) {
         this.velocidad.x *= -1;
+        
+        // aumentar magnitud de la velocidad
+        this.velocidadMagnitude *=1.05;
+        
+        velocidadMagnitude = min(velocidadMagnitude, 500);
 
         // Ajustar ángulo de rebote según punto de impacto
         float relativeY = paleta.getPosicion().y - this.posicion.y;
