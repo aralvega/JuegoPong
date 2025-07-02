@@ -4,6 +4,7 @@ class JugandoState implements GameState{
   private PaletaCPU paletaCPU;
   private Pelota pelota;
   private HUD hud;
+  private int puntajeMaximo;
   
   public JugandoState(Game game){
     this.game = game;
@@ -11,6 +12,7 @@ class JugandoState implements GameState{
     this.paletaCPU = new PaletaCPU();
     this.pelota = new Pelota();
     this.hud = new HUD();
+    this.puntajeMaximo=11;
   }
   
   public void update(){
@@ -20,15 +22,23 @@ class JugandoState implements GameState{
     this.pelota.validarColision(this.paletaCPU);
     if(this.pelota.validarChoqueParedVerticalDerecha()){
       this.paletaJugador.setPuntaje(this.paletaJugador.getPuntaje()+1);
-      this.pelota.resetEstado();
+      pelota.resetEstado();
+      
     }
     if(this.pelota.validarChoqueParedVerticalIzquierda()){
       this.paletaCPU.setPuntaje(this.paletaCPU.getPuntaje()+1);
-      this.pelota.resetEstado();
+      pelota.resetEstado();
+      
     }
+    
     this.hud.visualizarPuntajes(paletaJugador.getPuntaje(),paletaCPU.getPuntaje());
     this.paletaCPU.mover(this.pelota);
     
+    if(paletaJugador.getPuntaje()==this.puntajeMaximo){
+      this.game.setState(new GanadorState(this.game,"Jugador"));
+    }else if(paletaCPU.getPuntaje()==this.puntajeMaximo){
+      this.game.setState(new GanadorState(this.game,"CPU"));
+    }
   }
   
   public void render(){

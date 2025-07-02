@@ -1,8 +1,10 @@
 class GanadorState implements GameState{
   private Game game;
+  private String ganador;
   
-  public GanadorState(Game game){
+  public GanadorState(Game game, String ganador){
     this.game = game;
+    this.ganador = ganador;
   }
   
   public void update(){
@@ -17,7 +19,7 @@ class GanadorState implements GameState{
       text("*",i,30);
       text("*",i,height-30);
     }
-    text("JUGADOR 1 HA GANADO", width/2, height/2-50);
+    text(ganador + " HA GANADO", width/2, height/2-50);
     text("Presione [R] para reiniciar", width/2, height/2);
   }
  
